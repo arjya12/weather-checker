@@ -1,15 +1,13 @@
-const url = 'https://weatherapi-com.p.rapidapi.com/current.json';
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': '449352ba10msh01e8e1c09d49a38p100993jsn136396436988',
-        'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-    }
-};
-
 async function fetchWeather(city) {
     try {
-        const response = await fetch(`${url}?q=${encodeURIComponent(city)}`, options);
+        const response = await fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${encodeURIComponent(city)}`, {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '449352ba10msh01e8e1c09d49a38p100993jsn136396436988',
+                'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+            }
+        });
+
         if (!response.ok) {
             throw new Error('City not found or server error');
         }
